@@ -1,6 +1,6 @@
 set nocompatible              " be iMproved, required
-filetype plugin on
-filetype indent on
+filetype off
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,7 +9,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'AutoComplPop'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'itchyny/lightline.vim'
 Bundle 'L9'
 "Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 Bundle 'https://github.com/tpope/vim-fugitive'
@@ -22,46 +21,19 @@ Bundle 'vim-coffee-script'
 Bundle 'jade.vim'
 Bundle 'FuzzyFinder'
 
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
 let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'base16_default'
 let g:airline_theme = 'wombat'
 let g:netrw_dirhistmax = 0
+let g:airline#extensions#tabline#enabled = 1
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lightline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' }
-      \ }
-
-
-call vundle#end()            " required
 
 syn on
 set nobackup
@@ -82,7 +54,6 @@ set softtabstop=4
 set expandtab
 set shiftwidth=4
 "14.01.07 updated.
-set laststatus=2
 set encoding=utf-8
 "14.06.02 updated.
 set cindent
