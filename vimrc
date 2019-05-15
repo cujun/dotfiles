@@ -73,7 +73,7 @@ endif
 
 " Colorscheme
 set background=dark
-colorscheme peaksea
+colorscheme molokai
 
 "14.01.18 updated.
 set title
